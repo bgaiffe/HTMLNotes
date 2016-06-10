@@ -71,17 +71,18 @@
 ]]>
       </script>
       <!-- <div class="texte" style="overflow-y:auto; height:500px;" onscroll="noteManagement();">-->
-    <div class="texte">
+    <div class="texte" style="border-style : solid; border-width  : 0cm 0cm 0.5cm 0cm; border-color:white; margin-left: 15%; margin-right: 15%; font-family: Georgia, serif; font-size: 130%; line-height: 150%;">
       <xsl:apply-templates select="//tei:text"/>
     </div>
     <!-- on met toute les notes dans un bandeau de bas de page.... -->
     <div class="notes" style="position: fixed; bottom :0;left:0;background: white; width: 100%;border-style : solid; border-width  : 0cm 0cm 0.5cm 0cm; border-color:white;">
+      <div style="margin-left : 15%; margin-right: 15%;">
       <hr id="leHrPourLesNotes" width="40%" align="left"/>
       <xsl:for-each select="//tei:note">
-	<span class="spNote"  id="{concat('note', generate-id())}" rel="{concat('appel', generate-id())}" onmouseover="mouseOverNote(this);" onmouseout="mouseOutNote(this);"><sup><xsl:value-of select="position()"/></sup><xsl:apply-templates/><a href="{concat('#appel', generate-id())}">⏎</a><br/></span>
+	<span class="spNote"  id="{concat('note', generate-id())}" rel="{concat('appel', generate-id())}" onmouseover="mouseOverNote(this);" onmouseout="mouseOutNote(this);"><p style="text-align: justify;"><sup><xsl:value-of select="position()"/></sup><xsl:apply-templates/><a href="{concat('#appel', generate-id())}">⏎</a><br/></p></span>
       </xsl:for-each>
       
-    </div>
+    </div></div>
     </html>
   </xsl:template>
 
@@ -95,7 +96,7 @@
 	<xsl:apply-templates/>
       </xsl:when>
       <xsl:otherwise>
-	<p style="text-align: justify;">
+	<p style="text-align: justify; text-indent: 50px;">
 	  <xsl:apply-templates/>
 	</p>
       </xsl:otherwise>
